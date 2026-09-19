@@ -75,3 +75,9 @@ class VectorStore:
             "SELECT doc_id, COUNT(*) FROM chunks GROUP BY doc_id ORDER BY doc_id"
         )
         return [{"doc_id": d, "chunks": c} for d, c in cur.fetchall()]
+
+    def get_doc_chunks(self, doc_id: str) -> list[str]:
+        cur = self.conn.execute(
+            "SELECT text FROM chunks WHERE doc_id = ? ORDER BY chunk_index", (doc_id,)
+        )
+        return [r[0] for r in cur.fetchall()]

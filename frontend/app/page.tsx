@@ -11,7 +11,8 @@ const EXAMPLES = [
 ];
 
 type Source = { doc_id: string; score: number | null; text: string };
-type Message = { role: "user" | "assistant"; content: string; sources?: Source[] };
+type Flag = { title: string; detail: string };
+type Message = { role: "user" | "assistant"; content: string; sources?: Source[]; flags?: Flag[] };
 
 export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -43,8 +44,16 @@ export default function Home() {
       const res = await fetch(`${API}/documents`, { method: "POST", body: fd });
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "Upload failed");
-      setStatus(`Indexed "${data.filename}" · ${data.chunks} chunks`);
       setDocCount((c) => (c ?? 0) + 1);
+      setStatus(`Reviewing "${data.filename}" for risky clauses…`);
+      try {
+        const rr = await fetch(`${API}/documents/${data.doc_id}/risks`);
+        const rd = await rr.json();
+        setMessages((m) => [...m, { role: "assistant", content: "", flags: rd.flags || [] }]);
+      } catch {
+        /* risk analysis is best-effort */
+      }
+      setStatus(`Indexed "${data.filename}" · ${data.chunks} chunks`);
     } catch (err) {
       setStatus(`Error: ${(err as Error).message}`);
     } finally {
@@ -130,7 +139,26 @@ export default function Home() {
             <div key={i} className={`row ${m.role}`}>
               {m.role === "assistant" && <div className="avatar">§</div>}
               <div className="col">
-                <div className="bubble">{m.content}</div>
+                {m.flags !== undefined ? (
+                  <div className="risk-card">
+                    <div className="risk-head">
+                      <span className="risk-ic">⚠</span> Things to watch out for
+                    </div>
+                    {m.flags.length === 0 ? (
+                      <p className="risk-none">Nothing major stood out in this document.</p>
+                    ) : (
+                      <ul className="flags">
+                        {m.flags.map((f, k) => (
+                          <li key={k}>
+                            <strong>{f.title}.</strong> {f.detail}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ) : (
+                  <div className="bubble">{m.content}</div>
+                )}
                 {m.sources && m.sources.length > 0 && (
                   <details className="sources">
                     <summary>

@@ -8,6 +8,7 @@ from fastapi import APIRouter, File, HTTPException, UploadFile
 from app.services.chunking import chunk_text
 from app.services.embeddings import CohereEmbedder
 from app.services.extract import extract_text
+from app.services.risks import RiskAnalyzer
 from app.services.store import VectorStore
 
 router = APIRouter(prefix="/documents", tags=["documents"])
@@ -40,3 +41,9 @@ async def upload_document(file: UploadFile = File(...)):
 def list_documents():
     """List ingested documents and their chunk counts."""
     return {"documents": VectorStore().documents()}
+
+
+@router.get("/{doc_id}/risks")
+def document_risks(doc_id: str):
+    """Flag risky or easy-to-miss clauses in a document."""
+    return {"flags": RiskAnalyzer().analyze(doc_id)}
