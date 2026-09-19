@@ -124,7 +124,7 @@ export default function Home() {
         {messages.length === 0 ? (
           <div className="welcome">
             <div className="welcome-logo">§</div>
-            <h1>Understand what you signed</h1>
+            <h1>Understand <span className="hl">what you signed</span></h1>
             <p>Upload a lease, contract, or terms of service and ask plain-English questions. Every answer points to the exact clause, and flags anything risky.</p>
             <div className="examples">
               {EXAMPLES.map((ex) => (
