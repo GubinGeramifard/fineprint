@@ -10,12 +10,13 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 class ChatRequest(BaseModel):
     question: str
     k: int = 5
+    language: str | None = None
 
 
 @router.post("")
 def chat(req: ChatRequest):
     """Answer a question over the indexed documents, with citations and sources."""
-    result = RagPipeline().ask(req.question, k_rerank=req.k)
+    result = RagPipeline().ask(req.question, k_rerank=req.k, language=req.language)
     sources = [
         {"doc_id": s["doc_id"], "score": s.get("rerank_score"), "text": s["text"]}
         for s in result["sources"]

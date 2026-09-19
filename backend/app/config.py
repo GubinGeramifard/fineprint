@@ -9,9 +9,9 @@ class Settings(BaseSettings):
     database_url: str = ""
     redis_url: str = ""
 
-    embed_model: str = "embed-english-v3.0"
+    embed_model: str = "embed-multilingual-v3.0"
     embed_dim: int = 1024
-    rerank_model: str = "rerank-english-v3.0"
+    rerank_model: str = "rerank-multilingual-v3.0"
     chat_model: str = "command-r-08-2024"
 
     chunk_size: int = 450

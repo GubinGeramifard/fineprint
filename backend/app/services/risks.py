@@ -24,18 +24,23 @@ class RiskAnalyzer:
         self.client = cohere.ClientV2(settings.cohere_api_key)
         self.model = settings.chat_model
 
-    def analyze(self, doc_id: str) -> list[dict]:
+    def analyze(self, doc_id: str, language: str | None = None) -> list[dict]:
         chunks = VectorStore().get_doc_chunks(doc_id)
         if not chunks:
             return []
         text = "\n\n".join(chunks)[:8000]
+
+        if language and language.lower() != "auto":
+            lang_line = f" Write the titles and details in {language}."
+        else:
+            lang_line = " Write the titles and details in the same language as the document."
 
         for attempt in range(6):
             try:
                 resp = self.client.chat(
                     model=self.model,
                     messages=[
-                        {"role": "system", "content": RISK_PROMPT},
+                        {"role": "system", "content": RISK_PROMPT + lang_line},
                         {"role": "user", "content": text},
                     ],
                     response_format={"type": "json_object"},

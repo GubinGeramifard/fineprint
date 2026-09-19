@@ -44,6 +44,6 @@ def list_documents():
 
 
 @router.get("/{doc_id}/risks")
-def document_risks(doc_id: str):
+def document_risks(doc_id: str, language: str | None = None):
     """Flag risky or easy-to-miss clauses in a document."""
-    return {"flags": RiskAnalyzer().analyze(doc_id)}
+    return {"flags": RiskAnalyzer().analyze(doc_id, language=language)}

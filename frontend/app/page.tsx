@@ -10,6 +10,18 @@ const EXAMPLES = [
   "Does this lease renew automatically?",
 ];
 
+const LANGS: [string, string][] = [
+  ["auto", "Auto"],
+  ["English", "English"],
+  ["French", "Français"],
+  ["Spanish", "Español"],
+  ["Chinese", "中文"],
+  ["Portuguese", "Português"],
+  ["German", "Deutsch"],
+  ["Arabic", "العربية"],
+  ["Hindi", "हिन्दी"],
+];
+
 type Source = { doc_id: string; score: number | null; text: string };
 type Flag = { title: string; detail: string };
 type Message = { role: "user" | "assistant"; content: string; sources?: Source[]; flags?: Flag[] };
@@ -21,6 +33,7 @@ export default function Home() {
   const [uploading, setUploading] = useState(false);
   const [status, setStatus] = useState("");
   const [docCount, setDocCount] = useState<number | null>(null);
+  const [language, setLanguage] = useState("auto");
   const fileRef = useRef<HTMLInputElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
 
@@ -47,7 +60,9 @@ export default function Home() {
       setDocCount((c) => (c ?? 0) + 1);
       setStatus(`Reviewing "${data.filename}" for risky clauses…`);
       try {
-        const rr = await fetch(`${API}/documents/${data.doc_id}/risks`);
+        const rr = await fetch(
+          `${API}/documents/${data.doc_id}/risks?language=${encodeURIComponent(language)}`
+        );
         const rd = await rr.json();
         setMessages((m) => [...m, { role: "assistant", content: "", flags: rd.flags || [] }]);
       } catch {
@@ -71,7 +86,7 @@ export default function Home() {
       const res = await fetch(`${API}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: q }),
+        body: JSON.stringify({ question: q, language }),
       });
       const data = await res.json();
       setMessages((m) => [
@@ -99,6 +114,16 @@ export default function Home() {
           </div>
         </div>
         <div className="topbar-right">
+          <label className="lang">
+            <span className="lang-label">Answers in</span>
+            <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+              {LANGS.map(([val, label]) => (
+                <option key={val} value={val}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </label>
           {docCount != null && (
             <span className="pill">{docCount} document{docCount === 1 ? "" : "s"} indexed</span>
           )}

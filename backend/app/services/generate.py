@@ -20,15 +20,22 @@ class CohereGenerator:
         self.client = cohere.ClientV2(settings.cohere_api_key)
         self.model = settings.chat_model
 
-    def answer(self, question: str, passages: list[dict]) -> dict:
+    def answer(self, question: str, passages: list[dict], language: str | None = None) -> dict:
         documents = [
             {"id": str(i), "data": {"text": p["text"]}}
             for i, p in enumerate(passages)
         ]
+        if language and language.lower() != "auto":
+            lang_line = (
+                f" Always write your answer in {language}, regardless of the language of the "
+                "question or the document."
+            )
+        else:
+            lang_line = " Always answer in the same language as the user's question."
         resp = self.client.chat(
             model=self.model,
             messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "system", "content": SYSTEM_PROMPT + lang_line},
                 {"role": "user", "content": question},
             ],
             documents=documents,
