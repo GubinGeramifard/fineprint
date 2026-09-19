@@ -1,0 +1,48 @@
+RESIDENTIAL LEASE AGREEMENT (Sample)
+
+A fictional lease used to demo FinePrint. Ingest it with:
+    python -m app.demo ingest samples/sample_lease.txt --doc-id lease
+
+1. Parties and Property. This Lease is made between the Landlord and the Tenant for the
+residential unit located at 123 Example Street, Unit 4, Toronto, Ontario.
+
+2. Term. The lease term is twelve (12) months, beginning on January 1 and ending on
+December 31. The Tenant agrees to occupy the unit only as a private residence.
+
+3. Rent. The monthly rent is $2,100, due on the first day of each month. Rent is considered
+late if not received by the third day of the month.
+
+4. Late Fees. If rent is not paid by the third day of the month, the Tenant shall pay a late
+fee of $75, plus an additional $10 for each day the rent remains unpaid thereafter.
+
+5. Rent Increases. The Landlord may increase the rent once per twelve-month period, provided
+the Landlord gives the Tenant at least ninety (90) days written notice before the increase
+takes effect. No rent increase may take effect during the fixed term of this lease.
+
+6. Security Deposit. The Tenant shall provide a security deposit equal to one month of rent.
+The deposit will be returned within thirty (30) days after the Tenant moves out, less any
+amounts withheld for damage beyond normal wear and tear or unpaid rent.
+
+7. Early Termination. If the Tenant ends the lease before the end of the term, the Tenant is
+responsible for a penalty equal to two (2) months of rent, and remains responsible for rent
+until the unit is re-rented. The Tenant must provide at least sixty (60) days written notice.
+
+8. Automatic Renewal. Unless either party gives written notice at least sixty (60) days before
+the end of the term, this lease automatically renews on a month-to-month basis at the same
+rent, subject to the rent-increase rules above.
+
+9. Maintenance and Repairs. The Landlord is responsible for major repairs and for keeping the
+unit in a habitable condition. The Tenant is responsible for minor upkeep, for damage caused
+by the Tenant or guests, and for reporting needed repairs promptly.
+
+10. Landlord Entry. The Landlord may enter the unit for repairs or inspection after giving the
+Tenant at least twenty-four (24) hours written notice, except in an emergency, when no notice
+is required.
+
+11. Subletting. The Tenant may not sublet the unit or assign the lease without the Landlord's
+prior written consent, which shall not be unreasonably withheld.
+
+12. Pets. No pets are permitted without the Landlord's prior written consent. An additional pet
+deposit of $300 may be required.
+
+13. Governing Law. This lease is governed by the laws of the Province of Ontario.

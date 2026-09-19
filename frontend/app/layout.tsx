@@ -9,8 +9,8 @@ const sans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "DocuChat",
-  description: "Ask questions over your documents, grounded in the sources.",
+  title: "FinePrint",
+  description: "Understand what you signed. Ask plain-English questions about your contracts and leases, with citations to the exact clause.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

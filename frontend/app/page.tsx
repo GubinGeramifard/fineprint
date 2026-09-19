@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 const EXAMPLES = [
-  "How many vacation days do employees get?",
-  "What is the remote work policy?",
-  "How do I get reimbursed for an expense?",
+  "Can my landlord raise the rent during the lease?",
+  "What happens if I end the lease early?",
+  "Does this lease renew automatically?",
 ];
 
 type Source = { doc_id: string; score: number | null; text: string };
@@ -83,10 +83,10 @@ export default function Home() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <span className="logo" aria-hidden>◆</span>
+          <span className="logo" aria-hidden>§</span>
           <div>
-            <div className="brand-name">DocuChat</div>
-            <div className="brand-sub">Answers grounded in your documents</div>
+            <div className="brand-name">FinePrint</div>
+            <div className="brand-sub">Understand what you signed</div>
           </div>
         </div>
         <div className="topbar-right">
@@ -104,7 +104,7 @@ export default function Home() {
             }}
           />
           <button className="ghost-btn" disabled={uploading} onClick={() => fileRef.current?.click()}>
-            {uploading ? "Ingesting…" : "＋ Add document"}
+            {uploading ? "Ingesting…" : "＋ Upload a contract"}
           </button>
         </div>
       </header>
@@ -114,9 +114,9 @@ export default function Home() {
       <main className="thread">
         {messages.length === 0 ? (
           <div className="welcome">
-            <div className="welcome-logo">◆</div>
-            <h1>Chat with your documents</h1>
-            <p>Upload a PDF or text file and ask questions. Every answer is grounded in the source text, with citations.</p>
+            <div className="welcome-logo">§</div>
+            <h1>Understand what you signed</h1>
+            <p>Upload a lease, contract, or terms of service and ask plain-English questions. Every answer points to the exact clause, and flags anything risky.</p>
             <div className="examples">
               {EXAMPLES.map((ex) => (
                 <button key={ex} className="example" onClick={() => askWith(ex)}>
@@ -128,7 +128,7 @@ export default function Home() {
         ) : (
           messages.map((m, i) => (
             <div key={i} className={`row ${m.role}`}>
-              {m.role === "assistant" && <div className="avatar">◆</div>}
+              {m.role === "assistant" && <div className="avatar">§</div>}
               <div className="col">
                 <div className="bubble">{m.content}</div>
                 {m.sources && m.sources.length > 0 && (
@@ -158,7 +158,7 @@ export default function Home() {
 
         {loading && (
           <div className="row assistant">
-            <div className="avatar">◆</div>
+            <div className="avatar">§</div>
             <div className="col">
               <div className="bubble typing">
                 <span></span><span></span><span></span>
@@ -182,7 +182,7 @@ export default function Home() {
           <input
             className="qinput"
             value={input}
-            placeholder="Ask a question about your documents…"
+            placeholder="Ask about your contract…"
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") askWith(input);
@@ -197,7 +197,7 @@ export default function Home() {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
           </button>
         </div>
-        <div className="composer-note">DocuChat can only answer from documents you upload.</div>
+        <div className="composer-note">FinePrint explains your document; it is not legal advice.</div>
       </div>
     </div>
   );

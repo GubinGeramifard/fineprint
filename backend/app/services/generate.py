@@ -3,6 +3,17 @@ import cohere
 
 from app.config import settings
 
+SYSTEM_PROMPT = (
+    "You are FinePrint, an assistant that helps everyday people understand legal and "
+    "contractual documents such as leases, contracts, job offers, and terms of service. "
+    "Answer only from the provided document excerpts. Explain in plain, simple language a "
+    "non-lawyer can understand, and keep answers concise. Ground every answer in the specific "
+    "clause. If a term is risky or easy to miss (automatic renewal, penalties, extra fees, "
+    "liability, waivers, short deadlines), point it out clearly. If the document does not cover "
+    "the question, say so plainly instead of guessing. You explain what the document says; you "
+    "do not give formal legal advice."
+)
+
 
 class CohereGenerator:
     def __init__(self) -> None:
@@ -16,7 +27,10 @@ class CohereGenerator:
         ]
         resp = self.client.chat(
             model=self.model,
-            messages=[{"role": "user", "content": question}],
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": question},
+            ],
             documents=documents,
         )
 
