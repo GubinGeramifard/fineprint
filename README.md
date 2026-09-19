@@ -60,13 +60,28 @@ Reproduce: `python -m benchmark.run --rerank`. The harness lives in `benchmark/`
 - [x] 2. Ingestion: upload -> chunk -> embed -> store (Cohere embeddings, local SQLite vector store)
 - [x] 3. Query: retrieve -> Cohere rerank -> grounded LLM answer with citations
 - [x] 4a. FastAPI endpoints: POST/GET /documents, POST /chat
-- [ ] 4b. Next.js/TS chat UI
+- [x] 4b. Next.js/TS chat UI (upload + grounded chat with sources)
 - [ ] 5. Async ingestion via Redis + RQ worker
 - [x] 6. Benchmark harness + results (semantic vs keyword vs rerank, with significance test)
 - [ ] 7. Tests, README polish, deploy
 - [ ] 8. Swap local store -> Postgres + pgvector (Supabase)
 
-## Local development
+## Run locally
 
-See `backend/README.md` (coming) for setup. Environment variables go in `backend/.env`
-(never committed).
+**Backend** (from `backend/`, with `.env` holding your `COHERE_API_KEY`):
+
+```bash
+python -m venv .venv
+.venv/Scripts/pip install -r requirements.txt      # Windows; use .venv/bin on macOS/Linux
+.venv/Scripts/uvicorn app.main:app --reload --port 8000
+```
+
+**Frontend** (from `frontend/`, in a second terminal):
+
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
+
+Open http://localhost:3000, upload a PDF or text file, and ask questions about it.
+The frontend talks to the API at `http://localhost:8000` (override with `NEXT_PUBLIC_API_URL`).
