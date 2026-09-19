@@ -1,0 +1,30 @@
+CONTRATO DE ARRENDAMIENTO RESIDENCIAL (Ejemplo)
+
+Un contrato ficticio para demostrar el soporte multilingue de FinePrint.
+
+1. Partes e Inmueble. Este contrato se celebra entre el Arrendador y el Arrendatario por la
+vivienda ubicada en Calle Ejemplo 123, Unidad 4.
+
+2. Plazo. El plazo del contrato es de doce (12) meses, del 1 de enero al 31 de diciembre.
+
+3. Renta. La renta mensual es de $2,100, pagadera el primer dia de cada mes. Se considera
+atrasada si no se recibe antes del tercer dia del mes.
+
+4. Recargos por Atraso. Si la renta no se paga antes del tercer dia, el Arrendatario pagara un
+recargo de $75, mas $10 adicionales por cada dia que la renta siga sin pagarse.
+
+5. Deposito de Garantia. El Arrendatario entregara un deposito equivalente a un mes de renta.
+El deposito se devolvera dentro de los treinta (30) dias posteriores a la salida, menos las
+cantidades retenidas por danos mayores al desgaste normal o por renta impaga.
+
+6. Terminacion Anticipada. Si el Arrendatario termina el contrato antes del plazo, sera
+responsable de una penalidad equivalente a dos (2) meses de renta, y seguira siendo
+responsable de la renta hasta que la vivienda se vuelva a alquilar. Debe dar un aviso por
+escrito con al menos sesenta (60) dias de anticipacion.
+
+7. Renovacion Automatica. Salvo que cualquiera de las partes de aviso por escrito al menos
+sesenta (60) dias antes del fin del plazo, este contrato se renueva automaticamente de mes a
+mes con la misma renta.
+
+8. Mascotas. No se permiten mascotas sin el consentimiento previo por escrito del Arrendador.
+Puede requerirse un deposito adicional de $300 por mascota.
