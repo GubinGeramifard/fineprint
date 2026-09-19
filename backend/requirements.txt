@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-dotenv
+python-multipart
+pypdf
+cohere
+psycopg[binary]
+pgvector
+redis
+rq
+httpx
