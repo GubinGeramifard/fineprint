@@ -1,0 +1,17 @@
+# Render blueprint for the FinePrint backend API.
+# Deploy: on render.com, New > Blueprint, point at this repo. Set COHERE_API_KEY when prompted.
+services:
+  - type: web
+    name: fineprint-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: COHERE_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: "http://localhost:3000"

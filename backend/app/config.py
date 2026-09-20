@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     cohere_api_key: str
     database_url: str = ""
     redis_url: str = ""
+    allowed_origins: str = "http://localhost:3000"
 
     embed_model: str = "embed-multilingual-v3.0"
     embed_dim: int = 1024

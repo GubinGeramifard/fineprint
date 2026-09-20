@@ -1,0 +1,4 @@
+# Extra deps for the benchmark (not needed to run the API).
+-r requirements.txt
+rank-bm25
+scipy
