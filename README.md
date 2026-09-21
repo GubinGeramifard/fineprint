@@ -1,6 +1,6 @@
-# FinePrint
+# SignD
 
-**Understand what you signed.** FinePrint is a full-stack RAG (retrieval-augmented generation)
+**Understand what you signed.** SignD is a full-stack RAG (retrieval-augmented generation)
 app that lets you upload a lease, contract, or terms of service and ask plain-English
 questions. Every answer is grounded in the document, cites the exact clause, and flags risky
 terms like penalties and automatic renewal.
@@ -11,7 +11,7 @@ Built to be provably better than keyword search (see the benchmark below).
 
 People sign leases, job offers, loan agreements, and terms of service they do not fully
 understand, and keyword search (Ctrl+F) fails when you do not know the exact wording.
-FinePrint retrieves by *meaning*, answers in plain language, and points to the clause it used
+SignD retrieves by *meaning*, answers in plain language, and points to the clause it used
 so you can verify it. Same RAG engine, aimed at a real problem.
 
 ## Stack

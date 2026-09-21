@@ -15,7 +15,7 @@ const serif = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "FinePrint",
+  title: "SignD",
   description: "Understand what you signed. Ask plain-English questions about your contracts and leases, with citations to the exact clause.",
 };
 

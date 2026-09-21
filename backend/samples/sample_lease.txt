@@ -1,6 +1,6 @@
 RESIDENTIAL LEASE AGREEMENT (Sample)
 
-A fictional lease used to demo FinePrint. Ingest it with:
+A fictional lease used to demo SignD. Ingest it with:
     python -m app.demo ingest samples/sample_lease.txt --doc-id lease
 
 1. Parties and Property. This Lease is made between the Landlord and the Tenant for the

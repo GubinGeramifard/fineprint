@@ -8,7 +8,7 @@ from app.config import settings
 from app.services.store import VectorStore
 
 RISK_PROMPT = (
-    "You are FinePrint, reviewing a contract for an everyday person who is not a lawyer. "
+    "You are SignD, reviewing a contract for an everyday person who is not a lawyer. "
     "From the document text, identify the specific clauses they should watch out for: "
     "penalties, extra fees, automatic renewal, deposits they could lose, liability or waivers, "
     "short deadlines, or anything costly or easy to miss. "

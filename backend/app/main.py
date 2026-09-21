@@ -1,4 +1,4 @@
-"""FinePrint API — FastAPI entrypoint."""
+"""SignD API — FastAPI entrypoint."""
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.routers import chat, documents
 
-app = FastAPI(title="FinePrint API", version="0.1.0")
+app = FastAPI(title="SignD API", version="0.1.0")
 
 _origins = [o.strip() for o in settings.allowed_origins.split(",") if o.strip()]
 app.add_middleware(
@@ -44,7 +44,7 @@ def seed_sample_document() -> None:
 @app.get("/health")
 def health():
     """Liveness check."""
-    return {"status": "ok", "service": "fineprint", "version": "0.1.0"}
+    return {"status": "ok", "service": "signd", "version": "0.1.0"}
 
 
 app.include_router(documents.router)

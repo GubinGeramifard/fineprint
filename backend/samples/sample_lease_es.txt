@@ -1,6 +1,6 @@
 CONTRATO DE ARRENDAMIENTO RESIDENCIAL (Ejemplo)
 
-Un contrato ficticio para demostrar el soporte multilingue de FinePrint.
+Un contrato ficticio para demostrar el soporte multilingue de SignD.
 
 1. Partes e Inmueble. Este contrato se celebra entre el Arrendador y el Arrendatario por la
 vivienda ubicada en Calle Ejemplo 123, Unidad 4.
