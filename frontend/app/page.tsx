@@ -30,7 +30,7 @@ const FEATURES = [
   },
   {
     title: "Free & open source",
-    body: "No account, no cost. The entire project is on GitHub for anyone to read.",
+    body: "Try it with no signup, or make a free account to save your library. The whole project is on GitHub.",
     icon: <path d="M8 18l-6-6 6-6m8 12l6-6-6-6" />,
   },
 ];
@@ -51,8 +51,10 @@ export default function Landing() {
         <div className="lp-links">
           <a href="#features">Features</a>
           <a href="#how">How it works</a>
+          <a href="/demo">Demo</a>
           <a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
-          <a className="lp-btn" href="/app">Open the app</a>
+          <a href="/app">Sign in</a>
+          <a className="lp-btn" href="/app">Sign up free</a>
         </div>
       </nav>
 
@@ -66,10 +68,10 @@ export default function Landing() {
             SignD answers in seconds, cites the exact clause, and flags anything risky, in any language.
           </p>
           <div className="lp-cta">
-            <a className="lp-primary" href="/app">Try it free &rarr;</a>
-            <a className="lp-ghost" href={GITHUB} target="_blank" rel="noreferrer">View on GitHub</a>
+            <a className="lp-primary" href="/demo">Try the demo &rarr;</a>
+            <a className="lp-ghost" href="/app">Sign up free</a>
           </div>
-          <p className="lp-note">No account, no cost. Your document never leaves the session.</p>
+          <p className="lp-note">No account needed to try the demo. Sign up to save your own documents.</p>
         </div>
 
         <div className="lp-preview" aria-hidden="true">
@@ -121,7 +123,10 @@ export default function Landing() {
 
       <section className="lp-band">
         <h2>Know exactly what you&rsquo;re signing.</h2>
-        <a className="lp-primary" href="/app">Launch SignD &rarr;</a>
+        <div className="lp-band-cta">
+          <a className="lp-primary" href="/demo">Try the demo &rarr;</a>
+          <a className="lp-band-ghost" href="/app">Sign up free</a>
+        </div>
       </section>
 
       <footer className="lp-footer">
@@ -130,8 +135,9 @@ export default function Landing() {
           <span>Understand what you signed.</span>
         </div>
         <div className="lp-foot-right">
+          <a href="/demo">Demo</a>
           <a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
-          <a href="/app">Open the app</a>
+          <a href="/app">Sign in</a>
         </div>
       </footer>
       <div className="lp-legal">SignD explains your document; it is not legal advice.</div>
