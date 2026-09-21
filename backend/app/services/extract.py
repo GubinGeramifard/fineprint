@@ -16,7 +16,12 @@ def _decode(data: bytes) -> str:
 
 def extract_text(path: str) -> str:
     p = Path(path)
-    if p.suffix.lower() == ".pdf":
+    ext = p.suffix.lower()
+    if ext == ".pdf":
         reader = PdfReader(str(p))
         return "\n".join((page.extract_text() or "") for page in reader.pages)
+    if ext == ".docx":
+        from docx import Document
+
+        return "\n".join(par.text for par in Document(str(p)).paragraphs)
     return _decode(p.read_bytes())

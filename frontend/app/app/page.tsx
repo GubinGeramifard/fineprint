@@ -105,6 +105,7 @@ export default function AppPage() {
 
   return (
     <div className="app">
+      <div className="print-header">SignD — Contract Analysis</div>
       <header className="topbar">
         <a className="brand" href="/">
           <span className="logo" aria-hidden>§</span>
@@ -127,10 +128,13 @@ export default function AppPage() {
           {docCount != null && (
             <span className="pill">{docCount} document{docCount === 1 ? "" : "s"} indexed</span>
           )}
+          {messages.length > 0 && (
+            <button className="ghost-btn" onClick={() => window.print()}>Export</button>
+          )}
           <input
             ref={fileRef}
             type="file"
-            accept=".pdf,.txt,.md"
+            accept=".pdf,.txt,.md,.docx"
             hidden
             onChange={(e) => {
               const f = e.target.files?.[0];

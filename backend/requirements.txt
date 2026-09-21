@@ -4,5 +4,6 @@ pydantic-settings
 python-dotenv
 python-multipart
 pypdf
+python-docx
 cohere
 numpy

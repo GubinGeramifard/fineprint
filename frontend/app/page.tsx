@@ -3,7 +3,7 @@ const GITHUB = "https://github.com/GubinGeramifard/fineprint";
 const FEATURES = [
   {
     title: "Any contract",
-    body: "Upload a PDF or text file, in any language. It's ready to query in seconds.",
+    body: "Upload a PDF, Word, or text file, in any language. It's ready to query in seconds.",
     icon: (
       <path d="M12 5v10m0-10l-4 4m4-4l4 4M5 19h14" />
     ),

@@ -257,3 +257,19 @@ body {
 .lp-foot-right a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
 .lp-foot-right a:hover { color: var(--ink); }
 .lp-legal { text-align: center; font-size: 12px; color: var(--muted); padding: 0 20px 40px; }
+
+/* ===================== Print / export ===================== */
+.print-header { display: none; }
+@media print {
+  .topbar, .statusbar, .composer-wrap { display: none !important; }
+  .app { height: auto; }
+  .thread { overflow: visible; padding: 8px 0; }
+  body { background: #fff; }
+  .print-header {
+    display: block !important; font-family: var(--font-serif), Georgia, serif;
+    font-size: 1.4rem; font-weight: 600; margin: 0 0 18px; padding: 0 4px;
+  }
+  .bubble, .risk-card, .src, .send, .btn { box-shadow: none !important; }
+  .row.user .bubble { background: #f0f0f4 !important; color: #16181d !important; border: 1px solid #ddd; }
+  .col { max-width: 100% !important; }
+}
