@@ -1,6 +1,4 @@
 """SignD API — FastAPI entrypoint."""
-from pathlib import Path
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -18,27 +16,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.on_event("startup")
-def seed_sample_document() -> None:
-    """On a fresh (empty) database, index the bundled sample lease so the demo works."""
-    from app.services.chunking import chunk_text
-    from app.services.embeddings import CohereEmbedder
-    from app.services.extract import extract_text
-    from app.services.store import VectorStore
-
-    try:
-        store = VectorStore()
-        if store.count() > 0:
-            return
-        sample = Path("samples/sample_lease.txt")
-        if not sample.exists():
-            return
-        chunks = chunk_text(extract_text(str(sample)))
-        store.add("lease", chunks, CohereEmbedder().embed_documents(chunks))
-    except Exception:
-        pass  # best-effort seeding; never block startup
 
 
 @app.get("/health")

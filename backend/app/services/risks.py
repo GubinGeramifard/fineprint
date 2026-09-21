@@ -5,7 +5,7 @@ import time
 import cohere
 
 from app.config import settings
-from app.services.store import VectorStore
+from app.services.store_pg import PgStore
 
 RISK_PROMPT = (
     "You are SignD, reviewing a contract for an everyday person who is not a lawyer. "
@@ -24,8 +24,8 @@ class RiskAnalyzer:
         self.client = cohere.ClientV2(settings.cohere_api_key)
         self.model = settings.chat_model
 
-    def analyze(self, doc_id: str, language: str | None = None) -> list[dict]:
-        chunks = VectorStore().get_doc_chunks(doc_id)
+    def analyze(self, user_id: str, doc_id: str, language: str | None = None) -> list[dict]:
+        chunks = PgStore().get_doc_chunks(user_id, doc_id)
         if not chunks:
             return []
         text = "\n\n".join(chunks)[:8000]
